@@ -157,7 +157,7 @@ public class HomeActivity extends AppCompatActivity  {
     private void signOut() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Sign out")
-                .setMessage("Do you really want to Sing out?")
+                .setMessage("Do you really want to Sign out?")
                 .setNegativeButton("CANCEL", (dialogInterface, which) -> {
                     dialogInterface.dismiss();
                 })
@@ -188,6 +188,10 @@ public class HomeActivity extends AppCompatActivity  {
     @Override
     protected void onStop() {
         EventBus.getDefault().unregister(this);
+        EventBus.getDefault().removeStickyEvent(CategoryClick.class);
+        EventBus.getDefault().removeStickyEvent(FoodItemClick.class);
+        EventBus.getDefault().removeStickyEvent(BestDealItemClick.class);
+        EventBus.getDefault().removeStickyEvent(PopularCategoryClick.class);
         super.onStop();
     }
 
